@@ -41,10 +41,10 @@
           <a class="nav-link js-scroll-trigger" href="#about">About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#experience">Experience</a>
+          <a class="nav-link js-scroll-trigger" href="#experience">Annonces</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#education">Education</a>
+          <a class="nav-link js-scroll-trigger" href="#education">connexion</a>
         </li>
         <li class="nav-item">
           <a class="nav-link js-scroll-trigger" href="#skills">Skills</a>
@@ -72,15 +72,9 @@
     <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="about">
       <div class="w-100">
       <img src="img/header.jpg" class="images_LBC">
-        <h1 class="mb-0">Clarence
-          <span class="text-primary">Taylor</span>
+        <h1 class="mb-0">Leboncoin
+          <span class="text-primary">meilleur site de transaction en ligne</span>
         </h1>
-        <div class="subheading mb-5">3542 Berry Street · Cheyenne Wells, CO 80810 · (317) 585-8468 ·
-          <a href="mailto:name@email.com">name@email.com</a>
-        </div>
-        <p class="lead mb-5">I am experienced in leveraging agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition.</p>
-        <div class="social-icons">
-        </div>
       </div>
     </section>
 

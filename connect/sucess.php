@@ -13,12 +13,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css" />
+  
   </head>
   <body>
     <div class="sucess">
     <h1>Bienvenue <?php echo $_SESSION['username']; ?> !</h1>
     <p>C'est votre tableau de bord.</p>
-    <a href="logout.php">Déconnexion</a>
+    <a href="../index2.php"><input type="button" value="Retour a la page " name="submit" class="btn-box-button"></a><br><br><br>
     </div>
   </body>
 </html>

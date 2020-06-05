@@ -80,3 +80,23 @@ body {
       color: #FFFFFF;
       border-radius: 3px;
   }
+
+  .btn-box-button {
+    border-radius: 5px;
+    background: black;
+    text-align: center;
+    cursor: pointer;
+    font-size: 19px;
+    width: 350px;
+    height: 51px;
+    padding: 0;
+    color: #fff;
+    border: 0;
+    outline:0;
+    transition-duration: 0.4s;
+  }
+
+  .btn-box-button:hover{
+    background-color: #353535; 
+    color: white;
+  }

@@ -44,7 +44,7 @@
           <a class="nav-link js-scroll-trigger" href="#experience">Annonces</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#education">connexion</a>
+          <a class="nav-link js-scroll-trigger" href="connect/login.php">connexion</a>
         </li>
         <li class="nav-item">
           <a class="nav-link js-scroll-trigger" href="#skills">Skills</a>

@@ -65,7 +65,6 @@ $liste = $req->fetch();
     </div>
   </nav>
 <h1>C'est votre profile</h1>
-<a href="../connect/logout.php">Déconnexion</a>
 <center><h1>Modifier</h1></center>
 
 <form action="Profile-confirm_modif.php" method="post">
@@ -90,6 +89,8 @@ $liste = $req->fetch();
 
 </form>    
 
-    
+<a href="../connect/logout.php">
+<input type="submit" class="btn btn-warning" value="Déconnexion">
+</a>
 </body>
 </html>

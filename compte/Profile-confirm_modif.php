@@ -32,7 +32,7 @@ else{
     <h1>Résultat de la modification</h1>
     <p><?= $message ?></p>
     <a href="../index2.php">
-    <input type="submit" class="btn btn-warning" value="retour à la page">
+    <input type="submit" class="btn btn-warning" value="déconnexion">
     </a> 
         
 </body>

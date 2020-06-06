@@ -1,3 +1,21 @@
+<?php 
+
+$pdo = new PDO("mysql:host=localhost;dbname=projet_web", "root", "", array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
+
+
+if (!empty($_POST)) {
+
+    $_POST["titre"] = htmlentities($_POST["titre"], ENT_QUOTES); 
+    $_POST["prix"] = htmlentities($_POST["prix"], ENT_QUOTES);
+    $_POST["description"] = htmlentities($_POST["description"], ENT_QUOTES);
+    $_POST["date"] = htmlentities($_POST["date"], ENT_QUOTES);
+    $requeteSQL = "INSERT INTO objet_annonce (titre, prix, description, date) VALUES ('$_POST[titre]', '$_POST[prix]', '$_POST[description]', '$_POST[date]')"; 
+    $result = $pdo->exec($requeteSQL); 
+
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,34 +70,6 @@
     </div>
   </nav>
 <h1>Creation de l'annonce</h1>
-
-                            <!-- CREATION -->
-
-
-<?php 
-
-$pdo = new PDO("mysql:host=localhost;dbname=projet_web", "root", "", array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
-//**********************************************************************************/
-
-if (!empty($_POST)) {
-
-    $_POST["titre"] = htmlentities($_POST["titre"], ENT_QUOTES);
-    //**********************************************************************************/
-        $_POST["prix"] = htmlentities($_POST["prix"], ENT_QUOTES);
-    //**********************************************************************************/
-    $_POST["description"] = htmlentities($_POST["description"], ENT_QUOTES);
-    //**********************************************************************************/
-        $_POST["date"] = htmlentities($_POST["date"], ENT_QUOTES);
-    //**********************************************************************************/
-
-    $requeteSQL = "INSERT INTO objet_annonce (titre, prix, description, date) VALUES ('$_POST[titre]', '$_POST[prix]', '$_POST[description]', '$_POST[date]')"; 
-    //création d'une colonne d'information dans la table 'experience' les différents paramètres sont Titre, SousTitre, description, DateEmbauche
-    //**********************************************************************************/
-    $result = $pdo->exec($requeteSQL); 
-    //éxécution de la requete
-    //**********************************************************************************/
-}
-?>
 
 <div class="starter-template">  
     <form method="POST" action="" enctype='multipart/form-data'>

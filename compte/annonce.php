@@ -58,7 +58,7 @@
 
 <?php 
 
-$pdo = new PDO("mysql:host=localhost;dbname=annonces", "root", "", array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
+$pdo = new PDO("mysql:host=localhost;dbname=projet_web", "root", "", array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
 //**********************************************************************************/
 
 if (!empty($_POST)) {

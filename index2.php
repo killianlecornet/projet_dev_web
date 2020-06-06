@@ -91,6 +91,7 @@
                 <div class="resume-date text-md-right">
                   <span class="text-primary"><?php echo $objet_annonce->date ; ?></span></div>
                   <a href="compte/modification.php?IDtable=<?= $objet_annonce->id ?>" class="btn btn-info">Modifier</a>
+                  <a href="compte/supprimer.php?IDtable=<?= $objet_annonce->id ?>" class="btn btn-danger">Supprimer</a>
                   <br>
                   
               </div>

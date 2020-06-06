@@ -11,6 +11,7 @@ $liste = $req->fetch();
 
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,7 +53,7 @@ $liste = $req->fetch();
           <a class="nav-link js-scroll-trigger" href="../index2.php">Menu</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#experience">Mes Annonces</a>
+          <a class="nav-link js-scroll-trigger" href="annonce.php">Mes Annonces</a>
         </li>
         <li class="nav-item">
           <a class="nav-link js-scroll-trigger" href="profile.php">Mon Profile</a>

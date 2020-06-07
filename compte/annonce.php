@@ -101,4 +101,4 @@ if (!empty($_POST)) {
 
 <br><br>
 
-<a href="../index2.php" class="btn btn-primary">Accueil</a>
+<a href="../index2.php#experience" class="btn btn-primary">Accueil</a>

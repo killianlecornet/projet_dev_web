@@ -1,15 +1,4 @@
-<?php 
 
-$db = new PDO('mysql:host=localhost;dbname=projet_web', 'root','');
-
-
-$req = $db->prepare('SELECT * FROM users');
-
-$executeIsOk = $req->execute();
-
-$liste = $req->fetch();
-
-?>
 <?php 
 
   $msg = "";
@@ -47,7 +36,18 @@ $liste = $req->fetch();
 
 </head>
 
+<?php 
 
+$db = new PDO('mysql:host=localhost;dbname=projet_web', 'root','');
+
+
+$req = $db->prepare('SELECT * FROM objet_annonce');
+
+$executeIsOk = $req->execute();
+
+$liste = $req->fetch();
+
+?>
 <body id="page-top">
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
@@ -67,7 +67,8 @@ $liste = $req->fetch();
         <li class="nav-item">
           <a class="nav-link js-scroll-trigger" href="profile.php">Mon Profile</a>
         </li>
-        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href=""><?= $liste['statut'] ?></a>
         </li>
   </form>
 </nav>
@@ -76,7 +77,18 @@ $liste = $req->fetch();
   </nav>
 <h1>C'est votre profile</h1>
 <center><h1>Modifier</h1></center>
+<?php 
 
+$db = new PDO('mysql:host=localhost;dbname=projet_web', 'root','');
+
+
+$req = $db->prepare('SELECT * FROM users');
+
+$executeIsOk = $req->execute();
+
+$liste = $req->fetch();
+
+?>
 <form action="Profile-confirm_modif.php" method="post">
 
     <p>
@@ -110,9 +122,31 @@ $liste = $req->fetch();
   	</div>
   </form>
 </div>
+<?php 
+
+$db = new PDO('mysql:host=localhost;dbname=projet_web', 'root','');
+
+
+$req = $db->prepare('SELECT * FROM objet_annonce');
+
+$executeIsOk = $req->execute();
+
+$liste = $req->fetch();
+
+?>
+<form action="confirm_statut.php" method="post">
+    <p>
+        <label for="statut">Statut</label><br>
+        <input type="text" name="statut" class="form-control"  id="exampleFormControlInput1 statut" value="<?= $liste['statut'] ?>">
+
+    </p>
+    <p><center><input type="submit" class="btn btn-success" value="Enregistrer"></p></center>
+
+</form>
 
 <a href="../connect/logout.php">
 <input type="submit" class="btn btn-warning" value="Déconnexion">
 </a>
+
 </body>
 </html>

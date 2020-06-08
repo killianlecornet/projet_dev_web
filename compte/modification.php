@@ -82,12 +82,12 @@ $liste = $req->fetch();
     </p>
     <p>
         <label for="description">description</label><br>
-        <input type="text" name="description" class="form-control"  id="exampleFormControlInput1 description" value="<?= $liste['description'] ?>">
+        <textarea rows="10" class="form-control" id="description exampleFormControlInput1" name="description"><?= $liste['description'] ?></textarea>
 
     </p>
     <p>
         <label for="date">Date</label><br>
-        <input type="text" name="date" class="form-control"  id="exampleFormControlInput1 date" value="<?= $liste['date'] ?>">
+        <input type="date" name="date" class="form-control"  id="exampleFormControlInput1 date" value="<?= $liste['date'] ?>">
 
     </p>
     <p><center><input type="submit" class="btn btn-success" value="Enregistrer"></p></center>

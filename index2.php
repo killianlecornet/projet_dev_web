@@ -89,7 +89,7 @@
                   <p><?php echo $objet_annonce->description ; ?>.</p>
                 </div>
                 <div class="resume-date text-md-right">
-                  <span class="text-primary"><?php echo $objet_annonce->date ; ?></span></div>
+                  <span class="text-primary"><?php echo $objet_annonce->date ; ?></span><br><?php echo $objet_annonce->statut ; ?></div>
                   <a href="compte/modification.php?IDtable=<?= $objet_annonce->id ?>" class="btn btn-info">Modifier</a>
                   <a href="compte/supprimer.php?IDtable=<?= $objet_annonce->id ?>" class="btn btn-danger">Supprimer</a>
                   <br>

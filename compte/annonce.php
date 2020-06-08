@@ -9,7 +9,8 @@ if (!empty($_POST)) {
     $_POST["prix"] = htmlentities($_POST["prix"], ENT_QUOTES);
     $_POST["description"] = htmlentities($_POST["description"], ENT_QUOTES);
     $_POST["date"] = htmlentities($_POST["date"], ENT_QUOTES);
-    $requeteSQL = "INSERT INTO objet_annonce (titre, prix, description, date) VALUES ('$_POST[titre]', '$_POST[prix]', '$_POST[description]', '$_POST[date]')"; 
+    $_POST["statut"] = htmlentities($_POST["statut"], ENT_QUOTES);
+    $requeteSQL = "INSERT INTO objet_annonce (titre, prix, description, date, statut) VALUES ('$_POST[titre]', '$_POST[prix]', '$_POST[description]', '$_POST[date]', '$_POST[statut]')"; 
     $result = $pdo->exec($requeteSQL); 
 
 }
@@ -91,7 +92,11 @@ if (!empty($_POST)) {
 
         <div class="form-group">
             <label for="date">Date</label>
-            <input type="text" class="form-control" id="date" name="date">
+            <input type="date" class="form-control" id="date" name="date">
+        </div>
+
+        <div class="form-group">
+            <input type="hidden" class="form-control" id="statut" name="statut" value="Active">
         </div>
 
         <button type="submit" class="btn btn-primary" id="OK">Enregistrer</button>

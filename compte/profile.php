@@ -10,8 +10,17 @@ $executeIsOk = $req->execute();
 $liste = $req->fetch();
 
 ?>
+<?php 
+
+  $msg = "";
+  if (isset($_POST['upload'])) {
+  	$image = $_FILES['image']['name'];
+  	$target = "../img/". $image;
+  	move_uploaded_file($_FILES['image']['tmp_name'], $target);
+  }
 
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -87,8 +96,20 @@ $liste = $req->fetch();
 
     </p>
     <p><center><input type="submit" class="btn btn-success" value="Enregistrer"></p></center>
+</form> 
 
-</form>    
+<div>
+  <form method="POST" action="profile.php" enctype="multipart/form-data">
+  	<input type="hidden" name="size" value="1000000">
+  	<div>
+      <p>Veuillez obligatoirement renomer votre image par "profile" avec une extension en ".jpg"</p>
+  	  <input type="file" name="image">
+  	</div>
+  	<div>
+  		<button type="submit" name="upload" class="btn btn-info">POST</button> <br><br><br><br><br><br>
+  	</div>
+  </form>
+</div>
 
 <a href="../connect/logout.php">
 <input type="submit" class="btn btn-warning" value="Déconnexion">

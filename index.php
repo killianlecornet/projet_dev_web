@@ -90,6 +90,7 @@
                 </div>
                 <div class="resume-date text-md-right">
                 <span class="text-primary"><?php echo $objet_annonce->date ; ?></span><br><?php echo $objet_annonce->statut ; ?></div>
+                <a href="messagerie/messagerie_client.php?IDtable=<?= $objet_annonce->id ?>" class="btn btn-info">Contacter</a>
                   <br>
                   
               </div>

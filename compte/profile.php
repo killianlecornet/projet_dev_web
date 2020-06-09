@@ -68,6 +68,9 @@ $liste = $req->fetch();
           <a class="nav-link js-scroll-trigger" href="profile.php">Mon Profile</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="../messagerie/messagerie_vendeur.php">Mes Messages</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link js-scroll-trigger" href=""><?= $liste['statut'] ?></a>
         </li>
   </form>

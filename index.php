@@ -102,12 +102,20 @@ $conn = mysqli_connect($db_server,$db_user_login, $db_user_pass, $db_name);
     <div class="card-body">
         <br>
         <h3 class="card-title"><?php echo $recherche['titre'] ; ?></h3>
-        <div class="subheading mb-3"><?php echo $recherche['prix'] ; ?></div>
+        <div class="subheading mb-3"><?php echo $recherche['prix'] ; ?> $</div>
         <p><?php echo $recherche['description'] ; ?>.</p>
-        </div>
+        </div><?php
+        echo "<div id='img_div' >";
+      	echo "<img class='rounded float-left' style='width: 200px;' src='images/".$recherche['image']."' >";
+        echo "</div>";?>
         <div class="resume-date text-md-right">
         <span class="text-primary"><?php echo $recherche['date'] ; ?></span><br><?php echo $recherche['statut'] ; ?></div>
-        <a href="messagerie/messagerie_client.php?IDtable=<?= $recherche['id'] ?>" class="btn btn-info">Contacter</a>
+  <?php if($recherche['statut'] == "Active"){?>
+                <a href="messagerie/messagerie_client.php?IDtable=<?= $recherche['id'] ?>" class="btn btn-info">Contacter</a>
+  <?php }else { ?>
+                <a href="#experience" class="btn btn-info">Indisponible</a>
+    <?php } ?>
+        
         <br>
    <?php } ?>
     </div>

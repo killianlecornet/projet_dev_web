@@ -10,11 +10,26 @@ if (!empty($_POST)) {
     $_POST["description"] = htmlentities($_POST["description"], ENT_QUOTES);
     $_POST["date"] = htmlentities($_POST["date"], ENT_QUOTES);
     $_POST["statut"] = htmlentities($_POST["statut"], ENT_QUOTES);
-    $requeteSQL = "INSERT INTO objet_annonce (titre, prix, description, date, statut) VALUES ('$_POST[titre]', '$_POST[prix]', '$_POST[description]', '$_POST[date]', '$_POST[statut]')"; 
+    
+    $msg = "";
+
+      // If upload button is clicked ...
+      if (isset($_POST['upload'])) {
+        // Get image name
+        $image = $_FILES['image']['name'];
+      
+        // image file directory
+        $target = "../images/".basename($image);
+
+        if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
+          $msg = "Image uploaded successfully";
+        }else{
+          $msg = "Failed to upload image";
+        }
+      }
+    $requeteSQL = "INSERT INTO objet_annonce (titre, prix, description, date, statut, image) VALUES ('$_POST[titre]', '$_POST[prix]', '$_POST[description]', '$_POST[date]', '$_POST[statut]', '$image')"; 
     $result = $pdo->exec($requeteSQL); 
-
-}
-
+  }
 ?>
 
 <!DOCTYPE html>
@@ -98,8 +113,12 @@ if (!empty($_POST)) {
         <div class="form-group">
             <input type="hidden" class="form-control" id="statut" name="statut" value="Active">
         </div>
+        <input type="hidden" name="size" value="1000000">
+  	   <div>
+  	  <input type="file" name="image">
+  	   </div>
 
-        <button type="submit" class="btn btn-primary" id="OK">Enregistrer</button>
+        <button  name="upload" type="submit" class="btn btn-primary" id="OK">Enregistrer</button>
 
     </form>
 </div>

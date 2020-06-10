@@ -48,8 +48,8 @@
         </li>
         </li>
         <nav class="navbar navbar-light">
-        <form class="form-inline">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <form class="form-inline" method='POST'>
+        <input class="form-control mr-sm-2" type="search" name="recherche" placeholder="Search" aria-label="Search">
         <!-- <button class="btn btn-light" type="submit">Search</button> -->
         </li>
   </form>
@@ -71,37 +71,47 @@
 
     <hr class="m-0">
 
-    <section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="experience">
+    <?php
+
+$db_server = 'localhost'; // Adresse du serveur MySQL
+$db_name = 'projet_web';            // Nom de la base de données
+$db_user_login = 'root';  // Nom de l'utilisateur
+$db_user_pass = '';       // Mot de passe de l'utilisateur
+
+// Ouvre une connexion au serveur MySQL
+$conn = mysqli_connect($db_server,$db_user_login, $db_user_pass, $db_name);
+
+ // Récupère la recherche
+ $recherche = isset($_POST['recherche']) ? $_POST['recherche'] : '';
+
+ // la requete mysql
+ $q = $conn->query(
+ "SELECT * FROM objet_annonce
+ WHERE titre LIKE '%$recherche%'
+ OR prix LIKE '%$recherche%'
+ LIMIT 10");?>
+
+<section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="experience">
       <div class="w-100">
         <h2 class="mb-5">Mes Annonces</h2>
 
-
-        <?php 
-        $pdo = new PDO("mysql:host=localhost;dbname=projet_web", "root", "", array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
-
-              $result = $pdo->query("SELECT * FROM objet_annonce WHERE id"); 
-              while ($objet_annonce = $result->fetch(PDO::FETCH_OBJ)) { ?>
-              
-              <br><div class="card">
-                <div class="card-body">
-                  <h3 class="card-title"><?php echo $objet_annonce->titre ; ?></h3>
-                  <div class="subheading mb-3"><?php echo $objet_annonce->prix ; ?></div>
-                  <p><?php echo $objet_annonce->description ; ?>.</p>
-                </div>
-                <div class="resume-date text-md-right">
-                  <span class="text-primary"><?php echo $objet_annonce->date ; ?></span><br><?php echo $objet_annonce->statut ; ?></div>
-                  <a href="compte/modification.php?IDtable=<?= $objet_annonce->id ?>" class="btn btn-info">Modifier</a>
-                  <a href="compte/supprimer.php?IDtable=<?= $objet_annonce->id ?>" class="btn btn-danger">Supprimer</a>
-                  <br>
-                  
-              </div>
-            <?php } ?>
-
-       
-      </div>
-
+<?php
+ // affichage du résultat
+ while( $recherche = mysqli_fetch_array($q)){?>
+<br><div class="card">
+    <div class="card-body">
+        <h3 class="card-title"><?php echo $recherche['titre'] ; ?></h3>
+        <div class="subheading mb-3"><?php echo $recherche['prix'] ; ?></div>
+        <p><?php echo $recherche['description'] ; ?>.</p>
+        </div>
+        <div class="resume-date text-md-right">
+        <span class="text-primary"><?php echo $recherche['date'] ; ?></span><br><?php echo $recherche['statut'] ; ?></div>
+        <a href="compte/modification.php?IDtable=<?= $recherche['id'] ?>" class="btn btn-info">Modifier</a>
+        <a href="compte/supprimer.php?IDtable=<?= $recherche['id'] ?>" class="btn btn-danger">Supprimer</a>
+        <br>
+   <?php } ?>
+    </div>
     </section>
-
 
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>

@@ -36,6 +36,18 @@
 
 </head>
 
+<?php 
+
+$db = new PDO('mysql:host=localhost;dbname=projet_web', 'root','');
+
+
+$req = $db->prepare('SELECT * FROM objet_annonce');
+
+$executeIsOk = $req->execute();
+
+$liste = $req->fetch();
+
+?>
 <body id="page-top">
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
@@ -58,17 +70,9 @@
         <li class="nav-item">
           <a class="nav-link js-scroll-trigger" href="../messagerie/messagerie_vendeur.php">Mes Messages</a>
         </li>
-        <?php 
-        $pdo = new PDO("mysql:host=localhost;dbname=projet_web", "root", "", array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
-
-              $result = $pdo->query("SELECT * FROM objet_annonce WHERE id"); 
-              while ($objet_annonce = $result->fetch(PDO::FETCH_OBJ)) { ?>
-              
         <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href=""><?php echo $objet_annonce->statut ; ?></a>
+          <a class="nav-link js-scroll-trigger" href=""><?= $liste['statut'] ?></a>
         </li>
-            <?php } ?>
-
   </form>
 </nav>
       </ul>
@@ -121,24 +125,25 @@ $liste = $req->fetch();
   	</div>
   </form>
 </div>
-
-<form action="confirm_statut.php" method="post">
 <?php 
-        $pdo = new PDO("mysql:host=localhost;dbname=projet_web", "root", "", array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
 
-              $result = $pdo->query("SELECT * FROM objet_annonce WHERE id"); 
-              while ($objet_annonce = $result->fetch(PDO::FETCH_OBJ)) { ?>
-              
-              <p>
+$db = new PDO('mysql:host=localhost;dbname=projet_web', 'root','');
+
+
+$req = $db->prepare('SELECT * FROM objet_annonce');
+
+$executeIsOk = $req->execute();
+
+$liste = $req->fetch();
+
+?>
+<form action="confirm_statut.php" method="post">
+    <p>
         <label for="statut">Statut</label><br>
-        <input type="text" name="statut" class="form-control"  id="exampleFormControlInput1 statut" value="<?php echo $objet_annonce->statut ; ?>">
+        <input type="text" name="statut" class="form-control"  id="exampleFormControlInput1 statut" value="<?= $liste['statut'] ?>">
 
-            </p>
-                  
-               <p><center><input type="submit" class="btn btn-success" value="Enregistrer"></p></center>
-            <?php } ?>
-
- 
+    </p>
+    <p><center><input type="submit" class="btn btn-success" value="Enregistrer"></p></center>
 
 </form>
 

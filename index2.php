@@ -110,6 +110,7 @@ $conn = mysqli_connect($db_server,$db_user_login, $db_user_pass, $db_name);
         <a href="compte/supprimer.php?IDtable=<?= $recherche['id'] ?>" class="btn btn-danger">Supprimer</a>
         <br>
    <?php } ?>
+   
     </div>
     </section>
 

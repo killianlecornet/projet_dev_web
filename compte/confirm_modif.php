@@ -1,26 +1,3 @@
-<?php
-
-$db = new PDO('mysql:host=localhost;dbname=projet_web', 'root','');
-
-$req = $db->prepare('UPDATE objet_annonce SET titre=:titre, prix=:prix, description=:description, date=:date WHERE id=:num LIMIT 1');
-
-$req->bindValue(':num',$_POST['IDtable'],PDO::PARAM_INT);
-$req->bindValue(':titre', $_POST['titre'],PDO::PARAM_STR);
-$req->bindValue(':prix', $_POST['prix'],PDO::PARAM_STR);
-$req->bindValue(':description', $_POST['description'],PDO::PARAM_STR);
-$req->bindValue(':date', $_POST['date'],PDO::PARAM_STR);
-
-$executeIsOk = $req->execute();
-
-if($executeIsOk){
-    $message = 'Le texte a été mis a jour';
-}
-
-else{
-    $message = 'Le texte n a pas  été mis a jour';
-}
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -47,14 +24,25 @@ else{
   <link href="../css/resume.min.css" rel="stylesheet">
 
 </head>
+<?php 
 
+$db = new PDO('mysql:host=localhost;dbname=projet_web', 'root','');
+
+
+$req = $db->prepare('SELECT * FROM users');
+
+$executeIsOk = $req->execute();
+
+$liste = $req->fetch();
+
+?>
 
 <body id="page-top">
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
     <a class="navbar-brand js-scroll-trigger" href="#page-top">
       <span class="d-none d-lg-block">
-        <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="../img/profile.jpg" alt="">
+      <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="../images_PP/<?= $liste['image'] ?>" alt="">
       </span>
     </a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -75,7 +63,29 @@ else{
       </ul>
     </div>
   </nav>
+  <?php
 
+$db = new PDO('mysql:host=localhost;dbname=projet_web', 'root','');
+
+$req = $db->prepare('UPDATE objet_annonce SET titre=:titre, prix=:prix, description=:description, date=:date WHERE id=:num LIMIT 1');
+
+$req->bindValue(':num',$_POST['IDtable'],PDO::PARAM_INT);
+$req->bindValue(':titre', $_POST['titre'],PDO::PARAM_STR);
+$req->bindValue(':prix', $_POST['prix'],PDO::PARAM_STR);
+$req->bindValue(':description', $_POST['description'],PDO::PARAM_STR);
+$req->bindValue(':date', $_POST['date'],PDO::PARAM_STR);
+
+$executeIsOk = $req->execute();
+
+if($executeIsOk){
+    $message = 'L annonce a été mis a jour';
+}
+
+else{
+    $message = 'L annonce n a pas  été mis a jour';
+}
+
+?>
   <h1>Résultat de la modification</h1>
     <p><?= $message ?></p>
 

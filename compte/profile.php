@@ -1,15 +1,4 @@
 
-<?php 
-
-  $msg = "";
-  if (isset($_POST['upload'])) {
-  	$image = $_FILES['image']['name'];
-  	$target = "../img/". $image;
-  	move_uploaded_file($_FILES['image']['tmp_name'], $target);
-  }
-
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,25 +24,25 @@
   <link href="../css/resume.min.css" rel="stylesheet">
 
 </head>
-
 <?php 
 
 $db = new PDO('mysql:host=localhost;dbname=projet_web', 'root','');
 
 
-$req = $db->prepare('SELECT * FROM objet_annonce');
+$req = $db->prepare('SELECT * FROM users');
 
 $executeIsOk = $req->execute();
 
 $liste = $req->fetch();
 
 ?>
+
 <body id="page-top">
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
     <a class="navbar-brand js-scroll-trigger" href="#page-top">
       <span class="d-none d-lg-block">
-        <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="../img/profile.jpg" alt="">
+        <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="../images_PP/<?= $liste['image'] ?>" alt="">
       </span>
     </a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -70,6 +59,18 @@ $liste = $req->fetch();
         <li class="nav-item">
           <a class="nav-link js-scroll-trigger" href="../messagerie/messagerie_vendeur.php">Mes Messages</a>
         </li>
+        <?php 
+
+          $db = new PDO('mysql:host=localhost;dbname=projet_web', 'root','');
+
+
+          $req = $db->prepare('SELECT * FROM objet_annonce');
+
+          $executeIsOk = $req->execute();
+
+          $liste = $req->fetch();
+
+        ?>
         <li class="nav-item">
           <a class="nav-link js-scroll-trigger" href=""><?= $liste['statut'] ?></a>
         </li>
@@ -114,14 +115,13 @@ $liste = $req->fetch();
 </form> 
 
 <div>
-  <form method="POST" action="profile.php" enctype="multipart/form-data">
+  <form method="POST" action="modif_PP.php" enctype="multipart/form-data">
   	<input type="hidden" name="size" value="1000000">
   	<div>
-      <p>Veuillez obligatoirement renomer votre image par "profile" avec une extension en ".jpg"</p>
   	  <input type="file" name="image">
   	</div>
   	<div>
-  		<button type="submit" name="upload" class="btn btn-info">POST</button> <br><br><br><br><br><br>
+    <button  name="upload" type="submit" class="btn btn-primary" id="OK">Post</button> <br><br><br><br><br><br>
   	</div>
   </form>
 </div>
@@ -141,7 +141,7 @@ $liste = $req->fetch();
     <p>
         <label for="statut">Statut</label><br>
         <input type="text" name="statut" class="form-control"  id="exampleFormControlInput1 statut" value="<?= $liste['statut'] ?>">
-
+        
     </p>
     <p><center><input type="submit" class="btn btn-success" value="Enregistrer"></p></center>
 

@@ -1,18 +1,3 @@
-<?php 
-
-$db = new PDO('mysql:host=localhost;dbname=projet_web', 'root','');
-
-
-$req = $db->prepare('SELECT * FROM objet_annonce WHERE id=:num');
-
-$req->bindValue(':num',$_GET['IDtable'],PDO::PARAM_INT);
-
-$executeIsOk = $req->execute();
-
-$liste = $req->fetch();
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,14 +23,25 @@ $liste = $req->fetch();
   <link href="../css/resume.min.css" rel="stylesheet">
 
 </head>
+<?php 
 
+$db = new PDO('mysql:host=localhost;dbname=projet_web', 'root','');
+
+
+$req = $db->prepare('SELECT * FROM users');
+
+$executeIsOk = $req->execute();
+
+$liste = $req->fetch();
+
+?>
 
 <body id="page-top">
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
     <a class="navbar-brand js-scroll-trigger" href="#page-top">
       <span class="d-none d-lg-block">
-        <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="../img/profile.jpg" alt="">
+      <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="../images_PP/<?= $liste['image'] ?>" alt="">
       </span>
     </a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -66,7 +62,21 @@ $liste = $req->fetch();
       </ul>
     </div>
   </nav>
-  <form action="confirm_modif.php" method="post">
+  <?php 
+
+$db = new PDO('mysql:host=localhost;dbname=projet_web', 'root','');
+
+
+$req = $db->prepare('SELECT * FROM objet_annonce WHERE id=:num');
+
+$req->bindValue(':num',$_GET['IDtable'],PDO::PARAM_INT);
+
+$executeIsOk = $req->execute();
+
+$liste = $req->fetch();
+
+?>
+  <form action="confirm_modif.php" method="post" enctype="multipart/form-data">
     <input type="hidden"  name="IDtable" value="<?= $liste['id'] ?>">
 
     <p>
@@ -91,7 +101,17 @@ $liste = $req->fetch();
 
     </p>
     <p><center><input type="submit" class="btn btn-success" value="Enregistrer"></p></center>
-
 </form>
+<div>
+  <form method="POST" action="confirm_modif_img.php" enctype="multipart/form-data">
+  	<input type="hidden" name="size" value="1000000">
+  	<div>
+  	  <input type="file" name="image">
+  	</div>
+  	<div>
+    <button  name="upload" type="submit" class="btn btn-primary" id="OK">Post</button> <br><br><br><br><br><br>
+  	</div>
+  </form>
+</div>
 </body>
 </head>

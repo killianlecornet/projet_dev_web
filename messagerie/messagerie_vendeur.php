@@ -19,13 +19,24 @@
   <link href="../css/resume.min.css" rel="stylesheet">
 
 </head>
+<?php 
 
+$db = new PDO('mysql:host=localhost;dbname=projet_web', 'root','');
+
+
+$req = $db->prepare('SELECT * FROM users');
+
+$executeIsOk = $req->execute();
+
+$liste = $req->fetch();
+
+?>
 <body id="page-top">
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
     <a class="navbar-brand js-scroll-trigger" href="#page-top">
       <span class="d-none d-lg-block">
-        <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="../img/profile.jpg" alt="">
+      <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="../images_PP/<?= $liste['image'] ?>" alt="">
       </span>
     </a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -73,6 +84,10 @@
         </div>
     </form>
 </div>
+
+<form method="POST" action="supp_mess.php" enctype='multipart/form-data'>
+  <button type="submit" class="btn btn-danger" id="OK">Supprimer</button>
+</form>
 
 </body>
 </html>

@@ -110,7 +110,7 @@ $conn = mysqli_connect($db_server,$db_user_login, $db_user_pass, $db_name);
         echo "</div>";?>
         <div class="resume-date text-md-right">
         <span class="text-primary"><?php echo $recherche['date'] ; ?></span><br><?php echo $recherche['statut'] ; ?></div>
-  <?php if($recherche['statut'] == "Active"){?>
+  <?php if($recherche['statut'] == "Actif"){?>
                 <a href="messagerie/messagerie_client.php?IDtable=<?= $recherche['id'] ?>" class="btn btn-info">Contacter</a>
   <?php }else { ?>
                 <a href="#experience" class="btn btn-info">Indisponible</a>

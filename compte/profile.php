@@ -140,10 +140,19 @@ $liste = $req->fetch();
 <form action="confirm_statut.php" method="post">
     <p>
         <label for="statut">Statut</label><br>
-        <input type="text" name="statut" class="form-control"  id="exampleFormControlInput1 statut" value="<?= $liste['statut'] ?>">
+        <input type="hidden" name="statut" class="form-control"  id="exampleFormControlInput1 statut" value="Inactif">
         
     </p>
-    <p><center><input type="submit" class="btn btn-success" value="Enregistrer"></p></center>
+    <p><input type="submit" class="btn btn-danger" value="Inactif"></p>
+
+</form>
+<form action="confirm_statut.php" method="post">
+    <p>
+        
+        <input type="hidden" name="statut" class="form-control"  id="exampleFormControlInput1 statut" value="Actif">
+        
+    </p>
+    <p><input type="submit" class="btn btn-success" value="Actif"></p>
 
 </form>
 

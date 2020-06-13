@@ -122,7 +122,7 @@ if (!empty($_POST)) {
         </div>
 
         <div class="form-group">
-            <input type="hidden" class="form-control" id="statut" name="statut" value="Active">
+            <input type="hidden" class="form-control" id="statut" name="statut" value="Actif">
         </div>
         <input type="hidden" name="size" value="1000000">
   	   <div>

@@ -54,7 +54,7 @@ $liste = $req->fetch();
           <a class="nav-link js-scroll-trigger" href="annonce.php">Mes Annonces</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="profile.php">Mon Profile</a>
+          <a class="nav-link js-scroll-trigger" href="profile.php">Mon Profil</a>
         </li>
         <li class="nav-item">
           <a class="nav-link js-scroll-trigger" href="../messagerie/messagerie_vendeur.php">Mes Messages</a>
@@ -79,7 +79,7 @@ $liste = $req->fetch();
       </ul>
     </div>
   </nav>
-<h1>C'est votre profile</h1>
+<h1>C'est votre profil</h1>
 <center><h1>Modifier</h1></center>
 <?php 
 

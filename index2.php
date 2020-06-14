@@ -56,7 +56,7 @@ $liste = $req->fetch();
           <a class="nav-link js-scroll-trigger" href="#experience">Annonces</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="compte/profile.php">Profile</a>
+          <a class="nav-link js-scroll-trigger" href="compte/profile.php">Profil</a>
         </li>
         </li>
         <nav class="navbar navbar-light">

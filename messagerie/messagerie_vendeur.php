@@ -62,7 +62,7 @@ $liste = $req->fetch();
     <?php 
         $pdo = new PDO("mysql:host=localhost;dbname=projet_web", "root", "", array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
 
-              $result = $pdo->query("SELECT * FROM message WHERE id"); 
+              $result = $pdo->query("SELECT * FROM message"); 
               while ($message = $result->fetch(PDO::FETCH_OBJ)) { ?>
               
                   <div><b><?php echo $message->destinataire ; ?></b> : <?php echo $message->messages ; ?></div>

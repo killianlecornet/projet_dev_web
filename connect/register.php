@@ -13,14 +13,14 @@ require('config.php'); // se connecte a config.php
 if (isset($_POST['username'], $_POST['firstname'], $_POST['surname'], $_POST['email'], $_POST['password'])){
   // récupérer le nom d'utilisateur 
   $username = ($_POST['username']); 
-  $username = mysqli_real_escape_string($db, $username);  // récupérer l'ID / protège les caractère spéciaux
-  $firstname = ($_POST['firstname']);  // récupérer le Prénom / protège les caractère spéciaux
+  $username = mysqli_real_escape_string($db, $username);  // récupérer l'ID 
+  $firstname = ($_POST['firstname']);  // récupérer le Prénom 
   $firstname = mysqli_real_escape_string($db, $firstname);
-  $surname = ($_POST['surname']);  // récupérer le Nom / protège les caractère spéciaux
+  $surname = ($_POST['surname']);  // récupérer le Nom 
   $surname = mysqli_real_escape_string($db, $surname);
-  $email = ($_POST['email']); // récupérer l'email / protège les caractère spéciaux
+  $email = ($_POST['email']); // récupérer l'email 
   $email = mysqli_real_escape_string($db, $email);
-  $password = ($_POST['password']);  // récupérer le Mot de passe / protège les caractère spéciaux
+  $password = ($_POST['password']);  // récupérer le Mot de passe 
   $password = mysqli_real_escape_string($db, $password);
 
     $query = "INSERT into `users` (username, firstname, surname, email, password) 

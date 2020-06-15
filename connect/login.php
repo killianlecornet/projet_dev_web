@@ -12,9 +12,9 @@ require('config.php');
 session_start();
 
 if (isset($_POST['username'])){
-  $username = stripslashes($_REQUEST['username']);
+  $username = ($_REQUEST['username']);
   $username = mysqli_real_escape_string($db, $username);
-  $password = stripslashes($_REQUEST['password']);
+  $password = ($_REQUEST['password']);
   $password = mysqli_real_escape_string($db, $password);
     $query = "SELECT * FROM `users` WHERE username='$username' and password='".hash('sha256', $password)."'";
   $result = mysqli_query($db,$query) or die(mysql_error());

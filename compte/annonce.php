@@ -33,7 +33,7 @@ $req = $db->prepare('SELECT * FROM users');
 
 $executeIsOk = $req->execute();
 
-$liste = $req->fetch();
+$liste = $req->fetch(); //détermine la façon dont PDO retourne la ligne. 
 
 ?>
 
@@ -99,7 +99,7 @@ if (!empty($_POST)) {
 <h1>Creation de l'annonce</h1>
 
 <div class="starter-template">  
-    <form method="POST" action="" enctype='multipart/form-data'>
+    <form method="POST" action="" enctype='multipart/form-data'>   <!-- Permet aux personnes de télécharger à la fois du texte et des fichiers -->
 
         <div class="form-group">
             <label for="titre">Titre</label>

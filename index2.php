@@ -97,11 +97,7 @@ $conn = mysqli_connect($db_server,$db_user_login, $db_user_pass, $db_name);
  $recherche = isset($_POST['recherche']) ? $_POST['recherche'] : '';
 
  // la requete mysql
- $q = $conn->query(
- "SELECT * FROM objet_annonce
- WHERE titre LIKE '%$recherche%'
- OR prix LIKE '%$recherche%'
- LIMIT 10");?>
+ $q = $conn->query("SELECT * FROM objet_annonce WHERE titre LIKE '%$recherche%' OR prix LIKE '%$recherche%' LIMIT 10");?>
 
 <section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="experience">
       <div class="w-100">

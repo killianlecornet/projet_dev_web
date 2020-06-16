@@ -118,6 +118,7 @@ $liste = $req->fetch();
   <form method="POST" action="modif_PP.php" enctype="multipart/form-data">
   	<input type="hidden" name="size" value="1000000">
   	<div>
+      <label for="texte">Phtoto de profil :</label><br>
   	  <input type="file" name="image">
   	</div>
   	<div>
